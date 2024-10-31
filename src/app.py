@@ -4,7 +4,6 @@ import time
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4 
 from reportlab.fonts import *
-import getpass
 import os
 
 
@@ -34,11 +33,11 @@ def main(page: ft.Page):
                     if primeira_pagina:
                         primeira_pagina = False
                     else:
-                        cnv.setFont('Helvetica-Oblique', 12)
+                        cnv.setFont('Helvetica-Oblique', 9)
 
-                cnv.setFont('Helvetica-Oblique', 12)
-                cnv.drawString(30, pos, f'{itens["nome_dado"]}')
-                cnv.drawString(480, pos, f'{itens["valor_dado"]}')
+                cnv.setFont('Helvetica-Oblique', 9)
+                cnv.drawString(10, pos, f'{itens["nome_dado"]}')
+                cnv.drawString(500, pos, f'{itens["valor_dado"]}')
                 pos -= 20
                 var = pos
             return var
@@ -61,16 +60,16 @@ def main(page: ft.Page):
             caminho_pdf = os.path.join(caminho_pasta, f"{nome_pesquisa} {mes}.pdf")
         
             cnv = canvas.Canvas(caminho_pdf, pagesize=A4)
-            cnv.setFont('Helvetica-Oblique',18)
+            cnv.setFont('Helvetica-Oblique',14)
             cnv.drawString(200,800,f"MÊS: {mes} - {ano}")
             cnv.line(20, 780, 565,780)
             
             pos = posicao()
             
-            cnv.line(20, pos, 565,pos)
-            cnv.setFont('Helvetica-Oblique',28)
+            cnv.line(10, pos, 565,pos)
+            cnv.setFont('Helvetica-Oblique',20)
             cnv.drawString(30,pos - 40, f'TOTAL: ')  
-            cnv.drawString(370,pos - 40, f'R$ {data['total']}')
+            cnv.drawString(430,pos - 40, f'R$ {data['total']}')
 
             cnv.showPage()
             cnv.save()
