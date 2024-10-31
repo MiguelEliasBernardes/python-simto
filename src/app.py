@@ -38,6 +38,8 @@ def main(page: ft.Page):
                 cnv.setFont('Helvetica-Oblique', 9)
                 cnv.drawString(10, pos, f'{itens["nome_dado"]}')
                 cnv.drawString(500, pos, f'{itens["valor_dado"]}')
+                pos -= 5
+                cnv.line(10, pos, 565,pos)
                 pos -= 20
                 var = pos
             return var
@@ -66,7 +68,7 @@ def main(page: ft.Page):
             
             pos = posicao()
             
-            cnv.line(10, pos, 565,pos)
+            #cnv.line(10, pos, 565,pos)
             cnv.setFont('Helvetica-Oblique',20)
             cnv.drawString(30,pos - 40, f'TOTAL: ')  
             cnv.drawString(430,pos - 40, f'R$ {data['total']}')
